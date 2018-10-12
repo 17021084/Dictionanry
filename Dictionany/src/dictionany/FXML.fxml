@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane id="AnchorPane" prefHeight="512.0" prefWidth="628.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dictionany.FXMLController">
+    <stylesheets>
+        <URL value="@fxml.css" />
+    </stylesheets>
+   <children>
+      <ListView fx:id="listSearch" layoutX="38.0" layoutY="100.0" onMouseClicked="#display" prefHeight="374.0" prefWidth="194.0" />
+      <TextField fx:id="type" layoutX="38.0" layoutY="29.0" prefHeight="39.0" prefWidth="194.0" promptText="Type and Click  to Search" />
+     
+
+      <Button fx:id="speech" layoutX="272.0" layoutY="354.0" mnemonicParsing="false" onAction="#speech" prefHeight="50.0" prefWidth="50.0">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/speech.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Label layoutX="257.0" layoutY="84.0" prefHeight="17.0" prefWidth="138.0" text="Description:" />
+      <Button fx:id="fix" layoutX="342.0" layoutY="354.0" mnemonicParsing="false" onAction="#fix" prefHeight="50.0" prefWidth="51.0">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/fix.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="delete" layoutX="342.0" layoutY="421.0" mnemonicParsing="false" onAction="#delete" prefHeight="50.0" prefWidth="51.0" textAlignment="CENTER">
+         <graphic>
+            <ImageView fitHeight="43.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/delete.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="add" layoutX="272.0" layoutY="422.0" mnemonicParsing="false" onAction="#add" prefHeight="48.0" prefWidth="47.0">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/add.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button layoutX="257.0" layoutY="30.0" mnemonicParsing="false" onAction="#search" prefHeight="39.0" prefWidth="54.0">
+         <graphic>
+            <ImageView fx:id="img_add" fitHeight="42.0" fitWidth="31.0" onKeyPressed="#search" onMouseClicked="#search" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/search.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <ListView fx:id="recently" layoutX="430.0" layoutY="365.0" prefHeight="113.0" prefWidth="127.0" />
+      <Label layoutX="429.0" layoutY="345.0" prefHeight="18.0" prefWidth="103.0" text="Recent word" />
+      <Label layoutX="38.0" layoutY="75.0" text="List Word:" />
+      <TextField fx:id="rate" layoutX="459.0" layoutY="36.0" onAction="#setConstant" prefHeight="26.0" prefWidth="121.0" promptText="[0,100] default 50" />
+      <Label layoutX="369.0" layoutY="40.0" text="Correct rates:" />
+      <WebView fx:id="descrip" layoutX="259.0" layoutY="106.0" prefHeight="235.0" prefWidth="335.0" />
+   </children>
+</AnchorPane>
