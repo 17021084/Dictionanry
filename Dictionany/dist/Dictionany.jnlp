@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Dictionany.jar" size="56181" download="eager" />
+    <jar href="Dictionany.jar" size="76596" download="eager" />
     <jar href="lib\cmu_time_awb.jar" size="1723774" download="eager" />
     <jar href="lib\cmu_us_kal.jar" size="4899359" download="eager" />
     <jar href="lib\cmudict04.jar" size="894905" download="eager" />

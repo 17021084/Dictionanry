@@ -13,7 +13,7 @@ public final class DictionaryManagement   {
    // public String pathImport = "Vocabulary3.txt";
    // public String pathImport = "fileout.txt";
    public String pathImport = "dictionaries.txt"; 
-        public String pathExport = "VocabularyExport.txt";
+        public String pathExport = "dictionaries.txt";
     public Dictionary dictionary; 
     // adv method search : recommend Word 
     public double CORRECT_CONSTANT;
@@ -119,7 +119,7 @@ public final class DictionaryManagement   {
             return listLookFor;
             
         }
-         if ( (this.dictionary.getList().get(i).word_target.length() >=  wordLookUp.length()) && wordLookUp.equals(this.dictionary.getList().get(i).word_target.substring(0, wordLookUp.length()))){                  
+         if ( ( CORRECT_CONSTANT != 1 )&&  (this.dictionary.getList().get(i).word_target.length() >=  wordLookUp.length()) && wordLookUp.equals(this.dictionary.getList().get(i).word_target.substring(0, wordLookUp.length()))){                  
              
             listLookFor.add(this.dictionary.getList().get(i));     
             

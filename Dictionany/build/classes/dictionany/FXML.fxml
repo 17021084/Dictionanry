@@ -15,8 +15,8 @@
         <URL value="@fxml.css" />
     </stylesheets>
    <children>
-      <ListView fx:id="listSearch" layoutX="38.0" layoutY="100.0" onMouseClicked="#display" prefHeight="374.0" prefWidth="194.0" />
-      <TextField fx:id="type" layoutX="38.0" layoutY="29.0" prefHeight="39.0" prefWidth="194.0" promptText="Type and Click  to Search" />
+      <ListView fx:id="listSearch" layoutX="38.0" layoutY="100.0" onMouseClicked="#ListSearchUptoType" prefHeight="374.0" prefWidth="194.0" />
+      <TextField fx:id="type" layoutX="38.0" layoutY="29.0" onAction="#search" prefHeight="39.0" prefWidth="194.0" promptText="Type and Click  to Search" />
      
 
       <Button fx:id="speech" layoutX="272.0" layoutY="354.0" mnemonicParsing="false" onAction="#speech" prefHeight="50.0" prefWidth="50.0">
@@ -52,20 +52,25 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button layoutX="257.0" layoutY="30.0" mnemonicParsing="false" onAction="#search" prefHeight="39.0" prefWidth="54.0">
+      <Button layoutX="282.0" layoutY="34.0" mnemonicParsing="false" onAction="#refresh" onMouseClicked="#recentlyUptoType" prefHeight="31.0" prefWidth="31.0">
          <graphic>
-            <ImageView fx:id="img_add" fitHeight="42.0" fitWidth="31.0" onKeyPressed="#search" onMouseClicked="#search" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="21.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@image/search.png" />
+                  <Image url="@image/refresh.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <ListView fx:id="recently" layoutX="430.0" layoutY="365.0" prefHeight="113.0" prefWidth="127.0" />
-      <Label layoutX="429.0" layoutY="345.0" prefHeight="18.0" prefWidth="103.0" text="Recent word" />
+      <ListView fx:id="recently" layoutX="469.0" layoutY="365.0" onMouseClicked="#recentlyUptoType" prefHeight="113.0" prefWidth="127.0" />
+      <Label layoutX="469.0" layoutY="345.0" prefHeight="18.0" prefWidth="103.0" text="Recent word" />
       <Label layoutX="38.0" layoutY="75.0" text="List Word:" />
       <TextField fx:id="rate" layoutX="459.0" layoutY="36.0" onAction="#setConstant" prefHeight="26.0" prefWidth="121.0" promptText="[0,100] default 50" />
       <Label layoutX="369.0" layoutY="40.0" text="Correct rates:" />
       <WebView fx:id="descrip" layoutX="259.0" layoutY="106.0" prefHeight="235.0" prefWidth="335.0" />
+      <ImageView fx:id="img_add" fitHeight="42.0" fitWidth="31.0" layoutX="242.0" layoutY="34.0" onKeyPressed="#search" onMouseClicked="#search" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/search.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
