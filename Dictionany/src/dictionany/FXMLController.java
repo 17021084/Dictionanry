@@ -17,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
@@ -25,6 +26,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import model.SpeechRecognizerMain;
 
 /**
  * FXML Controller class
@@ -37,8 +39,10 @@ public class FXMLController  implements Initializable {
     public DictionaryManagement dic =new DictionaryManagement();
     public  Voice voice= new Voice("kevin16");
     public ArrayList<String> recent = new ArrayList<>();  
-    public ArrayList<Word> listWordTaget = new ArrayList<>();
     
+    
+    @FXML
+    Button stopvoice;
     @FXML
      TextField type ,rate;
     @FXML 
@@ -62,7 +66,15 @@ public class FXMLController  implements Initializable {
        for( String m : click){
            uptoType+=m;
        }       
+       // đưa từ cái recent ly lên cái ô nhập
        type.setText(uptoType);  
+       // hiện nghĩa luôn
+       ArrayList<Word> listWordTaget = new ArrayList<>();
+         listWordTaget = dic.dictionarySearcher(uptoType);
+         WebEngine engin =new WebEngine();
+             engin = descrip.getEngine();
+             engin.loadContent(listWordTaget.get(0).word_explain);
+       
        
        });  
     }
@@ -75,8 +87,17 @@ public class FXMLController  implements Initializable {
        click= listSearch.getSelectionModel().getSelectedItems();
        for( String m : click){
            uptoType+=m;
-       }       
-       type.setText(uptoType);                 
+       } 
+//       đưa lên ô nhập
+       type.setText(uptoType);  
+//       tìm từ luôn
+       ArrayList<Word> listWordTaget = new ArrayList<>();
+         listWordTaget = dic.dictionarySearcher(uptoType);
+         WebEngine engin =new WebEngine();
+             engin = descrip.getEngine();
+             engin.loadContent(listWordTaget.get(0).word_explain);
+       
+       
        });  
     }
     
@@ -119,7 +140,7 @@ public class FXMLController  implements Initializable {
          String word = type.getText();// lay text tu cai textfield
          // hàm search sẽ trả về  một array list <word>        
          // duyet toan bo nhung tu tim duoc
-         //ArrayList<Word> listWordTaget = new ArrayList<>();
+         ArrayList<Word> listWordTaget = new ArrayList<>();
          listWordTaget = dic.dictionarySearcher(word);
          if (listWordTaget.size()==1){
              //voice.say("Foud" );
@@ -293,10 +314,33 @@ public class FXMLController  implements Initializable {
           }
      }
      
+     public void start(ActionEvent e){
+                  SpeechRecognizerMain  re =new SpeechRecognizerMain();
+
+                // bắt đầu ghi âm 
+               voice.say("start");
+                re.startSpeechRecognition();
+                 
+               stopvoice.setOnAction( ActionEvent ->{
+                   
+                   voice.say(" stop ");
+        type.setText(re.speechRecognitionResult);               
+                re.stoppRecognizer();
+                   
+               });
+              
+                                    
+     }
+     
+//    public void stop (ActionEvent e){
+//        voice.say(" stop ");
+//        type.setText(re.speechRecognitionResult);               
+//                re.stoppRecognizer();
+//        
+//    }
      
      
      
-      
      @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
